@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from tqdm import tqdm
 import pandas as pd
-
+from datetime import datetime
 
 # --------------------------------------------------
 # DEFININDO INPUTS 
@@ -243,6 +243,9 @@ def geracao_embeddings(images_names, all_legendas, image_to_legend_indices, path
 # --------------------------------------------------
 # CHAMADA DAS FUNÇÕES
 # --------------------------------------------------
+inicio_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(f"INICIO: {inicio_hora}")
+
 captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, modelo_openai_input, modelo_openai_input_path_name, ja_feito_salvo_em_pickle  = inputs()
 print("INPUTS")
 print(f'Txt Captions: {captions_input}')
@@ -276,3 +279,5 @@ print(len(all_legendas))
 
 print("GERACAO")
 geracao_embeddings(images_names, all_legendas, image_to_legend_indices, path_image_folder, modelo_openai_input, save_path_embeddings, modelo_openai_input_path_name)
+final_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+print(f"FINAL: {final_hora}")
