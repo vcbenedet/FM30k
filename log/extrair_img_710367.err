@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/extrair.py", line 13, in <module>
+    tar.extractall(path=project_folder)
+  File "/usr/lib/python3.11/tarfile.py", line 2089, in extractall
+    self.extract(tarinfo, path, set_attrs=not tarinfo.isdir(),
+  File "/usr/lib/python3.11/tarfile.py", line 2130, in extract
+    self._extract_member(tarinfo, os.path.join(path, tarinfo.name),
+  File "/usr/lib/python3.11/tarfile.py", line 2203, in _extract_member
+    self.makefile(tarinfo, targetpath)
+  File "/usr/lib/python3.11/tarfile.py", line 2252, in makefile
+    copyfileobj(source, target, tarinfo.size, ReadError, bufsize)
+  File "/usr/lib/python3.11/tarfile.py", line 248, in copyfileobj
+    buf = src.read(bufsize)
+          ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/gzip.py", line 301, in read
+    return self._buffer.read(size)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/gzip.py", line 518, in read
+    raise EOFError("Compressed file ended before the "
+EOFError: Compressed file ended before the end-of-stream marker was reached

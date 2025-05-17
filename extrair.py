@@ -3,7 +3,7 @@ import tarfile
 import os
 
 # Caminho da pasta no Google Drive
-project_folder = '/home/users/vcbenedet/FM30k'
+project_folder = '/home/users/vcbenedet/FM30k/'
 
 # Caminhos dos arquivos
 tar_gz_path = f'{project_folder}flickr30k-images.tar.gz'
