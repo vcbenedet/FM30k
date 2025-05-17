@@ -1,0 +1,20 @@
+INICIO: 2025-05-17 20:15:40
+INPUTS
+Txt Captions: captions.txt
+PKT Name_img: name_img_100.pkl
+PKT ITL: image_to_legend_indices_100.pkl
+PKT Legendas: all_legendas_100.pkl
+Modelo: ViT-B/32
+Nome modelo salvar: ViT-B-32
+Ja salvo pickle: True
+PATHS
+Path project_folder: /home/users/vcbenedet/FM30k
+Path tar_gz_path: /home/users/vcbenedet/FM30kflickr30k-images.tar.gz
+Path captions_path: /home/users/vcbenedet/FM30kcaptions.txt
+Path path_image_folder: /home/users/vcbenedet/FM30kflickr30k-images
+Path path_name_vector: /home/users/vcbenedet/FM30kname_img_100.pkl
+Path path_image_to_legend_indices: /home/users/vcbenedet/FM30kimage_to_legend_indices_100.pkl
+Path path_all_legendas: /home/users/vcbenedet/FM30kall_legendas_100.pkl
+Path save_path_embeddings: /home/users/vcbenedet/FM30kInferencias/Embeddings_ViT-B-32
+ESTRUTURAS
+Organizando imagens e legendas

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_completo.py", line 272, in <module>
+    images_names, all_legendas, image_to_legend_indices = organiza_img_txt(captions_path, path_name_vector, path_image_to_legend_indices, path_all_legendas, ja_feito_salvo_em_pickle)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_completo.py", line 150, in organiza_img_txt
+    with open(path_name_vector, 'rb') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/users/vcbenedet/FM30kname_img_100.pkl'
