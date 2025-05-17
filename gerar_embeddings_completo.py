@@ -18,9 +18,9 @@ from datetime import datetime
 # --------------------------------------------------
 def inputs():
     captions_input = 'captions.txt'
-    name_img_input = 'name_img.pkl'
-    image_to_legend_indices_input = 'image_to_legend_indices.pkl'
-    all_legendas_input = 'all_legendas.pkl'
+    name_img_input = 'name_img_100.pkl'
+    image_to_legend_indices_input = 'image_to_legend_indices_100.pkl'
+    all_legendas_input = 'all_legendas_100.pkl'
     modelo_openai_input = 'ViT-B/32'
     ja_feito_salvo_em_pickle = True
 
