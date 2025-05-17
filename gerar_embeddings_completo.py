@@ -166,6 +166,7 @@ def geracao_embeddings(images_names, all_legendas, image_to_legend_indices, path
 
     ## -- CARREGA O MODELO DA OPENAI --
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Device usado {device}")
     model_openai, preprocess_openai = clip.load(modelo_openai, device=device)
 
     ## -- DATASET E DATALOADER --
