@@ -1,0 +1,42 @@
+INICIO: 2025-05-18 11:10:30
+INPUTS
+Txt Captions: captions.txt
+PKT Name_img: name_img_100.pkl
+PKT ITL: image_to_legend_indices_100.pkl
+PKT Legendas: all_legendas_100.pkl
+Modelo: ViT-B/32
+Nome modelo salvar: ViT-B-32
+Ja salvo pickle: True
+PATHS
+Path project_folder: /home/users/vcbenedet/FM30k/
+Path tar_gz_path: /home/users/vcbenedet/FM30k/flickr30k-images.tar.gz
+Path captions_path: /home/users/vcbenedet/FM30k/captions.txt
+Path path_image_folder: /home/users/vcbenedet/FM30k/flickr30k-images
+Path path_name_vector: /home/users/vcbenedet/FM30k/name_img_100.pkl
+Path path_image_to_legend_indices: /home/users/vcbenedet/FM30k/image_to_legend_indices_100.pkl
+Path path_all_legendas: /home/users/vcbenedet/FM30k/all_legendas_100.pkl
+Path save_path_embeddings: /home/users/vcbenedet/FM30k/Inferencias/Embeddings_ViT-B-32
+ESTRUTURAS
+Organizando imagens e legendas
+Vetor images_names carregado com sucesso usando pickle!
+20
+Dicionário image_to_legend_indices carregado com sucesso usando pickle!
+20
+Vetor all_legendas carregado com sucesso usando pickle!
+100
+METRICAS
+(Imagem ➔ Texto)
+✅ Top-5 Accuracy: 1.0000
+✅ mAP: 0.6515
+✅ Precision@5: 0.7000
+✅ Recall@5: 0.7000
+✅ MRR: 0.9100
+✅ F1-Score@5: 0.7000
+(Texto ➔ Imagem)
+✅ Top-5 Accuracy: 0.8600
+✅ mAP: 0.6760
+✅ Precision@5: 0.1720
+✅ Recall@5: 0.8600
+✅ MRR: 0.6760
+✅ F1-Score@5: 0.2867
+FINAL: 2025-05-18 11:10:30
