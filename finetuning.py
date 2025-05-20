@@ -37,7 +37,7 @@ def inputs():
 # PATH LOCALIZACAO DATASET
 # --------------------------------------------------
 def define_path(captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, nome_salvar):
-    project_folder = 'C:/Users/Vitoria/Desktop/gt/'
+    project_folder = '/home/users/vcbenedet/FM30k/'
     tar_gz_path = f'{project_folder}flickr30k-images.tar.gz'
     captions_path = f'{project_folder}{captions_input}'
     path_image_folder = f'{project_folder}flickr30k-images'
