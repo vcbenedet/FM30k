@@ -20,8 +20,8 @@ def inputs():
     num_folds = 5
     seed = 42
     np.random.seed(seed)
-    fold_id = 0
-    epochs = 3
+    fold_id = 1
+    epochs = 10
     base_finetuning = "ViT-B/32"
     nome_salvar = f"{base_finetuning.replace('/', '-')}_seed{seed}_{fold_id}"
 

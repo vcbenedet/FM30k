@@ -1,0 +1,86 @@
+INICIO: 2025-05-20 00:24:03
+INPUTS
+Txt Captions: captions.txt
+PKT Name_img: name_img.pkl
+PKT ITL: image_to_legend_indices.pkl
+PKT Legendas: all_legendas.pkl
+base_finetuning: ViT-B/32
+Ja salvo pickle: True
+N folds: 5
+seed: 42
+fold_id: 0
+epochs: 10
+nome_salvar: ViT-B-32_seed42_0
+PATHS
+Path project_folder: /home/users/vcbenedet/FM30k/
+Path tar_gz_path: /home/users/vcbenedet/FM30k/flickr30k-images.tar.gz
+Path captions_path: /home/users/vcbenedet/FM30k/captions.txt
+Path path_image_folder: /home/users/vcbenedet/FM30k/flickr30k-images
+Path path_name_vector: /home/users/vcbenedet/FM30k/name_img.pkl
+Path path_image_to_legend_indices: /home/users/vcbenedet/FM30k/image_to_legend_indices.pkl
+Path path_all_legendas: /home/users/vcbenedet/FM30k/all_legendas.pkl
+Path finetuning_path: /home/users/vcbenedet/FM30k/Finetuning/clip_finetuned_ViT-B-32_seed42_0.pth
+ESTRUTURAS
+Organizando imagens e legendas
+Vetor images_names carregado com sucesso usando pickle!
+31783
+Dicionário image_to_legend_indices carregado com sucesso usando pickle!
+31783
+Vetor all_legendas carregado com sucesso usando pickle!
+158915
+FOLDS
+FINETUNING
+
+ Epoch 1/10 - Loss total: 12339.0587
+
+ Epoch 2/10 - Loss total: 12187.0294
+
+ Epoch 3/10 - Loss total: 12122.9364
+
+ Epoch 4/10 - Loss total: 12067.2212
+
+ Epoch 5/10 - Loss total: 12012.8159
+
+ Epoch 6/10 - Loss total: 11961.1944
+
+ Epoch 7/10 - Loss total: 11912.5266
+
+ Epoch 8/10 - Loss total: 11864.9200
+
+ Epoch 9/10 - Loss total: 11820.0485
+
+ Epoch 10/10 - Loss total: 11778.6767
+Modelo finetunado salvo em /home/users/vcbenedet/FM30k/Finetuning/clip_finetuned_ViT-B-32_seed42_0.pth!
+EMBEDDINGS VALIDACAO
+Embeddings finetunado salvo em /home/users/vcbenedet/FM30k/Finetuning/Embeddings_Fine!
+Embeddings originais salvo em /home/users/vcbenedet/FM30k/Finetuning/Embeddings_Original!
+METRICAS
+(Imagem ➔ Texto)
+Top-5 Accuracy: 0.6044
+mAP: 0.1648
+Precision@5: 0.2213
+Recall@5: 0.2213
+MRR: 0.4317
+F1-Score@5: 0.2213
+(Texto ➔ Imagem)
+Top-5 Accuracy: 0.4003
+mAP: 0.2606
+Precision@5: 0.0801
+Recall@5: 0.4003
+MRR: 0.2606
+F1-Score@5: 0.1334
+(Imagem ➔ Texto)
+Top-5 Accuracy: 0.2915
+mAP: 0.0571
+Precision@5: 0.0842
+Recall@5: 0.0842
+MRR: 0.1895
+F1-Score@5: 0.0842
+(Texto ➔ Imagem)
+Top-5 Accuracy: 0.1149
+mAP: 0.0682
+Precision@5: 0.0230
+Recall@5: 0.1149
+MRR: 0.0682
+F1-Score@5: 0.0383
+FINAL: 2025-05-20 05:51:39
