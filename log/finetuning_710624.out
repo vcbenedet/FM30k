@@ -30,3 +30,57 @@ Vetor all_legendas carregado com sucesso usando pickle!
 158915
 FOLDS
 FINETUNING
+
+ Epoch 1/10 - Loss total: 12335.6600
+
+ Epoch 2/10 - Loss total: 12185.5118
+
+ Epoch 3/10 - Loss total: 12121.5391
+
+ Epoch 4/10 - Loss total: 12065.6579
+
+ Epoch 5/10 - Loss total: 12012.9452
+
+ Epoch 6/10 - Loss total: 11960.5875
+
+ Epoch 7/10 - Loss total: 11910.1308
+
+ Epoch 8/10 - Loss total: 11862.6537
+
+ Epoch 9/10 - Loss total: 11817.7586
+
+ Epoch 10/10 - Loss total: 11777.1469
+Modelo finetunado salvo em /home/users/vcbenedet/FM30k/Finetuning/clip_finetuned_ViT-B-32_seed42_1.pth!
+EMBEDDINGS VALIDACAO
+Embeddings finetunado salvo em /home/users/vcbenedet/FM30k/Finetuning/Embeddings_Fine!
+Embeddings originais salvo em /home/users/vcbenedet/FM30k/Finetuning/Embeddings_Original!
+METRICAS
+(Imagem ➔ Texto)
+Top-5 Accuracy: 0.6037
+mAP: 0.1660
+Precision@5: 0.2206
+Recall@5: 0.2206
+MRR: 0.4335
+F1-Score@5: 0.2206
+(Texto ➔ Imagem)
+Top-5 Accuracy: 0.4029
+mAP: 0.2629
+Precision@5: 0.0806
+Recall@5: 0.4029
+MRR: 0.2629
+F1-Score@5: 0.1343
+(Imagem ➔ Texto)
+Top-5 Accuracy: 0.2832
+mAP: 0.0560
+Precision@5: 0.0825
+Recall@5: 0.0825
+MRR: 0.1831
+F1-Score@5: 0.0825
+(Texto ➔ Imagem)
+Top-5 Accuracy: 0.1035
+mAP: 0.0595
+Precision@5: 0.0207
+Recall@5: 0.1035
+MRR: 0.0595
+F1-Score@5: 0.0345
+FINAL: 2025-05-20 11:15:32
