@@ -1,0 +1,32 @@
+INICIO: 2025-05-19 23:41:15
+INPUTS
+Txt Captions: captions.txt
+PKT Name_img: name_img_1000.pkl
+PKT ITL: image_to_legend_indices_1000.pkl
+PKT Legendas: all_legendas_1000.pkl
+Modelo: ViT-B/32
+Nome modelo salvar: ViT-B-32_1000
+Ja salvo pickle: True
+PATHS
+Path project_folder: /home/users/vcbenedet/FM30k/
+Path tar_gz_path: /home/users/vcbenedet/FM30k/flickr30k-images.tar.gz
+Path captions_path: /home/users/vcbenedet/FM30k/captions.txt
+Path path_image_folder: /home/users/vcbenedet/FM30k/flickr30k-images
+Path path_name_vector: /home/users/vcbenedet/FM30k/name_img_1000.pkl
+Path path_image_to_legend_indices: /home/users/vcbenedet/FM30k/image_to_legend_indices_1000.pkl
+Path path_all_legendas: /home/users/vcbenedet/FM30k/all_legendas_1000.pkl
+Path save_path_embeddings: /home/users/vcbenedet/FM30k/Inferencias/Embeddings_ViT-B-32_1000
+ESTRUTURAS
+Organizando imagens e legendas
+Vetor images_names carregado com sucesso usando pickle!
+1000
+Dicionário image_to_legend_indices carregado com sucesso usando pickle!
+1000
+Vetor all_legendas carregado com sucesso usando pickle!
+5000
+GERACAO
+Geração dos Embeddings Dataset Completo
+Device usado cuda
+Embeddings de imagem image_embeddings_ViT-B-32_1000.pt salvos com sucesso no diretório /home/users/vcbenedet/FM30k/Inferencias/Embeddings_ViT-B-32_1000!
+Embeddings de texto text_embeddings_ViT-B-32_1000.pt salvos com sucesso no diretório /home/users/vcbenedet/FM30k/Inferencias/Embeddings_ViT-B-32_1000!
+FINAL: 2025-05-19 23:41:22

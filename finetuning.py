@@ -23,12 +23,12 @@ def inputs():
     fold_id = 0
     epochs = 3
     base_finetuning = "ViT-B/32"
-    nome_salvar = f"{base_finetuning.replace('/', '-')}_seed{seed}_{fold_id}_1000"
+    nome_salvar = f"{base_finetuning.replace('/', '-')}_seed{seed}_{fold_id}"
 
     captions_input = 'captions.txt'
-    name_img_input = 'name_img_1000.pkl'
-    image_to_legend_indices_input = 'image_to_legend_indices_1000.pkl'
-    all_legendas_input = 'all_legendas_1000.pkl'
+    name_img_input = 'name_img.pkl'
+    image_to_legend_indices_input = 'image_to_legend_indices.pkl'
+    all_legendas_input = 'all_legendas.pkl'
     ja_feito_salvo_em_pickle = True
 
     return captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, ja_feito_salvo_em_pickle, base_finetuning, num_folds, seed, fold_id, epochs, nome_salvar
@@ -265,7 +265,7 @@ def finetuning(images_names, image_to_legend_indices, base_finetuning, train_ind
 
     ## -- DATALOADER --
     batch_size = 32
-    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
     ## -- EPOCAS - 1FOLD --
     model.train()

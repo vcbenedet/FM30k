@@ -1,0 +1,6 @@
+Torch: 2.7.0+cu126
+CUDA: 12.6
+Numpy: 2.2.5
+PIL: 11.2.1
+CLIP: /home/users/vcbenedet/FM30k/venv/lib/python3.11/site-packages/clip/__init__.py
+OS: Linux-6.1.0-20-amd64-x86_64-with-glibc2.36
