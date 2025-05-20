@@ -2,3 +2,4 @@ venv/
 flickr30k-images.tar.gz
 flickr30k-images/
 *.pt
+*.pth

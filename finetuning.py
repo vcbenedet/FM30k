@@ -264,7 +264,7 @@ def finetuning(images_names, image_to_legend_indices, base_finetuning, train_ind
     train_dataset = CLIPDataset(train_image_paths, train_legends, preprocess, path_image_folder)
 
     ## -- DATALOADER --
-    batch_size = 128
+    batch_size = 32
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
 
     ## -- EPOCAS - 1FOLD --

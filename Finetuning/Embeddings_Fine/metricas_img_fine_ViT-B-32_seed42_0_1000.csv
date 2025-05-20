@@ -1,0 +1,7 @@
+;Métrica;Valor
+0;top5_accuracy;0,905
+1;map;0,48979999999999996
+2;precision@k;0,546
+3;recall@k;0,546
+4;mrr;0,7908333333333333
+5;f1@k;0,546

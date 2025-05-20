@@ -1,0 +1,24 @@
+INICIO: 2025-05-19 23:03:30
+INPUTS
+Txt Captions: captions.txt
+PKT Name_img: name_img_1000.pkl
+PKT ITL: image_to_legend_indices_1000.pkl
+PKT Legendas: all_legendas_1000.pkl
+base_finetuning: ViT-B/32
+Ja salvo pickle: True
+N folds: 5
+seed: 42
+fold_id: 0
+epochs: 3
+nome_salvar: ViT-B-32_seed42_0_1000
+PATHS
+Path project_folder: C:/Users/Vitoria/Desktop/gt/
+Path tar_gz_path: C:/Users/Vitoria/Desktop/gt/flickr30k-images.tar.gz
+Path captions_path: C:/Users/Vitoria/Desktop/gt/captions.txt
+Path path_image_folder: C:/Users/Vitoria/Desktop/gt/flickr30k-images
+Path path_name_vector: C:/Users/Vitoria/Desktop/gt/name_img_1000.pkl
+Path path_image_to_legend_indices: C:/Users/Vitoria/Desktop/gt/image_to_legend_indices_1000.pkl
+Path path_all_legendas: C:/Users/Vitoria/Desktop/gt/all_legendas_1000.pkl
+Path finetuning_path: C:/Users/Vitoria/Desktop/gt/Finetuning/clip_finetuned_ViT-B-32_seed42_0_1000.pth
+ESTRUTURAS
+Organizando imagens e legendas
