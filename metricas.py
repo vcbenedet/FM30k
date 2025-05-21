@@ -25,7 +25,7 @@ def inputs():
     ja_feito_salvo_em_pickle = True
 
     modelo_openai_input_path_name = f"{modelo_openai_input.replace('/', '-')}"
-    modelo_openai_input_path_name = f"{modelo_openai_input_path_name}_1000"
+    modelo_openai_input_path_name = f"mclip-b32"
     return captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, modelo_openai_input, modelo_openai_input_path_name, ja_feito_salvo_em_pickle
 
 # --------------------------------------------------
