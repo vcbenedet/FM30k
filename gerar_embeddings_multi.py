@@ -233,15 +233,15 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
         all_embeddings = []
         for batch in tqdm(dataloader, desc="Texto"):
             with torch.no_grad():
-                embeddings = model.forward(batch, tokenizer)
+                embeddings = model(batch, tokenizer).to(device)  
                 embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
                 all_embeddings.append(embeddings.cpu())
         return torch.cat(all_embeddings)
 
 
     # --- GERAÇÃO ---
-    image_emb = generate_image_embeddings(model_image, image_loader)
     text_emb = generate_text_embeddings(model_text, tokenizer, text_loader)
+    image_emb = generate_image_embeddings(model_image, image_loader)
     print("Shape")
     print(text_emb.shape)
     os.makedirs(save_path_embeddings, exist_ok=True)
