@@ -233,11 +233,19 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
         all_embeddings = []
         for batch in tqdm(dataloader, desc="Texto"):
             with torch.no_grad():
-                embeddings = model(batch, tokenizer).to(device)  
-                embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
-                all_embeddings.append(embeddings.cpu())
-        return torch.cat(all_embeddings)
+                # Tokeniza e move para o device (cuda ou cpu)
+                tokenized = tokenizer(batch, padding=True, truncation=True, return_tensors="pt")
+                tokenized = {k: v.to(device) for k, v in tokenized.items()}  # <- ESSENCIAL
 
+                # Passa pela transformer do M-CLIP
+                output = model.transformer(**tokenized)[0]  # shape: (batch_size, seq_len, hidden_dim)
+                features = output[:, 0, :]  # CLS token
+
+                # Normaliza e move para CPU
+                features = features / features.norm(dim=-1, keepdim=True)
+                all_embeddings.append(features.cpu())
+
+        return torch.cat(all_embeddings)
 
     # --- GERAÇÃO ---
     text_emb = generate_text_embeddings(model_text, tokenizer, text_loader)
