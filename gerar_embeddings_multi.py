@@ -12,7 +12,7 @@ import seaborn as sns
 from tqdm import tqdm
 import pandas as pd
 from datetime import datetime
-from torch.utils.data import Dataset, DataLoader
+from transformers import AutoTokenizer
 from multilingual_clip import pt_multilingual_clip
 
 # --------------------------------------------------
@@ -20,14 +20,14 @@ from multilingual_clip import pt_multilingual_clip
 # --------------------------------------------------
 def inputs():
     captions_input = 'captions.txt'
-    name_img_input = 'name_img_1000.pkl'
-    image_to_legend_indices_input = 'image_to_legend_indices_1000.pkl'
-    all_legendas_input = 'all_legendas_1000.pkl'
+    name_img_input = 'name_img.pkl'
+    image_to_legend_indices_input = 'image_to_legend_indices.pkl'
+    all_legendas_input = 'all_legendas.pkl'
     modelo_openai_input = 'ViT-B/32'
     ja_feito_salvo_em_pickle = True
 
-    modelo_multi_input_path_name = "mclip_xlm-roberta-b32"
-    modelo_multi_input_path_name = f"{modelo_multi_input_path_name}_1000"
+    modelo_multi_input_path_name = "mclip-b32"
+    modelo_multi_input_path_name = f"{modelo_multi_input_path_name}"
 
     return captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, modelo_openai_input, modelo_multi_input_path_name, ja_feito_salvo_em_pickle
 

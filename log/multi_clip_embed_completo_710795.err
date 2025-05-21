@@ -1,0 +1,8 @@
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_multi.py", line 292, in <module>
+    geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_indices, path_image_folder, modelo_openai_input, save_path_embeddings, modelo_multi_input_path_name)
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_multi.py", line 179, in geracao_embeddings_multilingue
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+                ^^^^^^^^^^^^^
+NameError: name 'AutoTokenizer' is not defined. Did you mean: 'tokenizer'?
