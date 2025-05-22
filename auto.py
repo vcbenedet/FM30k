@@ -166,57 +166,62 @@ def organiza_img_txt(captions_path, path_name_vector, path_image_to_legend_indic
 def normalize_embeddings(embeddings):
     return embeddings / embeddings.norm(dim=1, keepdim=True)
 
-def compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, image_to_cap_index, k=5):
-    # Load embeddings
-    image_embeddings = torch.load(os.path.join(save_path_embeddings, f'image_embeddings_{modelo_openai_input_path_name}.pt'))
-    text_embeddings = torch.load(os.path.join(save_path_embeddings, f'text_embeddings_{modelo_openai_input_path_name}.pt'))
+def compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, image_to_cap_index, k=5, batch_size=512):
+    # Load
+    image_embeddings = torch.load(
+        os.path.join(save_path_embeddings, f'image_embeddings_{modelo_openai_input_path_name}.pt')
+    )
+    text_embeddings = torch.load(
+        os.path.join(save_path_embeddings, f'text_embeddings_{modelo_openai_input_path_name}.pt')
+    )
 
-    # Move to device
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    image_embeddings = image_embeddings.to(device, dtype=torch.float32)
-    text_embeddings = text_embeddings.to(device, dtype=torch.float32)
-
-    print(image_embeddings.shape, image_embeddings.device, image_embeddings.dtype)
-    print(text_embeddings.shape, text_embeddings.device, text_embeddings.dtype)
+    image_embeddings = image_embeddings.to(device)
+    text_embeddings = text_embeddings.to(device)
 
     # Normalize
     image_embeddings = normalize_embeddings(image_embeddings)
     text_embeddings = normalize_embeddings(text_embeddings)
 
-    # Cosine similarity
-    similarity_matrix = image_embeddings @ text_embeddings.T  # shape: (N_images, N_captions)
+    num_images = image_embeddings.shape[0]
+    topk_indices = []
 
-    # Get top-k indices (Torch, stays on GPU)
-    topk_values, topk_indices = similarity_matrix.topk(k, dim=1, largest=True)
+    # Compute similarities in batches
+    with torch.no_grad():
+        for i in range(0, num_images, batch_size):
+            batch = image_embeddings[i:i+batch_size]  # (B, D)
+            sims = batch @ text_embeddings.T          # (B, N_texts)
+            topk = torch.topk(sims, k=k, dim=1).indices  # (B, k)
+            topk_indices.append(topk.cpu())
 
-    # Prepare ground truth sets
+    topk_indices = torch.cat(topk_indices, dim=0).tolist()  # shape (num_images, k)
+
+    # Ground truth sets
     ground_truth = []
-    for i in range(image_embeddings.shape[0]):
+    for i in range(num_images):
         caps = image_to_cap_index[i]
         if isinstance(caps, int):
             caps = [caps]
         ground_truth.append(set(caps))
 
-    # Evaluate
+    # Binary relevance
     y_true_binary = []
     y_pred_binary = []
 
     for i, gt_set in enumerate(ground_truth):
-        top_k = topk_indices[i].tolist()
-        match = [idx in gt_set for idx in top_k]
+        preds = topk_indices[i]
+        y_true_binary.extend([idx in gt_set for idx in preds])
+        y_pred_binary.extend([True] * len(preds))
 
-        y_true_binary.extend([idx in gt_set for idx in top_k])
-        y_pred_binary.extend([True] * len(top_k))  # all top-k are treated as predicted positives
-
-    # Compute metrics
+    # Metrics
     precision = precision_score(y_true_binary, y_pred_binary, zero_division=0)
     recall = recall_score(y_true_binary, y_pred_binary, zero_division=0)
     f1 = f1_score(y_true_binary, y_pred_binary, zero_division=0)
 
-    # Accuracy@K: at least one correct in top-K
+    # Accuracy@K
     correct = [
-        any(idx in ground_truth[i] for idx in topk_indices[i].tolist())
-        for i in range(len(ground_truth))
+        any(idx in ground_truth[i] for idx in topk_indices[i])
+        for i in range(num_images)
     ]
     accuracy = np.mean(correct)
 
@@ -226,6 +231,8 @@ def compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, im
         f'F1@{k}': f1,
         f'Accuracy@{k}': accuracy,
     }
+
+
 # --------------------------------------------------
 # CHAMADA DAS FUNÇÕES
 # --------------------------------------------------
