@@ -247,11 +247,22 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
 
     #     return torch.cat(all_embeddings)
 
+    # def generate_text_embeddings(model, tokenizer, dataloader):
+    #     all_embeddings = []
+    #     for batch in tqdm(dataloader, desc="Texto"):
+    #         with torch.no_grad():
+    #             embeddings = model(batch, tokenizer).to(device)  # já cuida de tudo internamente
+    #             all_embeddings.append(embeddings.cpu())
+    #     return torch.cat(all_embeddings)
+
     def generate_text_embeddings(model, tokenizer, dataloader):
         all_embeddings = []
+        model.eval()
         for batch in tqdm(dataloader, desc="Texto"):
             with torch.no_grad():
-                embeddings = model(batch, tokenizer).to(device)  # já cuida de tudo internamente
+                tokens = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
+                embeddings = model(tokens)  # model chama internamente o forward
+                embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
                 all_embeddings.append(embeddings.cpu())
         return torch.cat(all_embeddings)
 
