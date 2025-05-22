@@ -164,9 +164,7 @@ def organiza_img_txt(captions_path, path_name_vector, path_image_to_legend_indic
 # --------------------------------------------------
 
 def normalize_embeddings(embeddings):
-    norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
-    return embeddings / norms
-
+    return embeddings / embeddings.norm(dim=1, keepdim=True)
 
 def compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, image_to_cap_index, k=5):
     # Load embeddings

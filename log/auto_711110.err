@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/auto.py", line 15, in <module>
+    from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
+ModuleNotFoundError: No module named 'sklearn'
