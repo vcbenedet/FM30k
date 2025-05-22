@@ -1,0 +1,17 @@
+Texto:   0%|          | 0/4967 [00:00<?, ?it/s]Texto:   0%|          | 0/4967 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_multi.py", line 320, in <module>
+    geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_indices, path_image_folder, modelo_openai_input, save_path_embeddings, modelo_multi_input_path_name)
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_multi.py", line 271, in geracao_embeddings_multilingue
+    text_emb = generate_text_embeddings(model_text, tokenizer, text_loader)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/vcbenedet/FM30k/gerar_embeddings_multi.py", line 264, in generate_text_embeddings
+    embeddings = model(tokens)  # model chama internamente o forward
+                 ^^^^^^^^^^^^^
+  File "/home/users/vcbenedet/FM30k/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/vcbenedet/FM30k/venv/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MultilingualCLIP.forward() missing 1 required positional argument: 'tokenizer'
