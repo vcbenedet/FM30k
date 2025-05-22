@@ -266,19 +266,29 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
     #             all_embeddings.append(embeddings.cpu())
     #     return torch.cat(all_embeddings)
 
+    # def generate_text_embeddings(model, tokenizer, dataloader):
+    #     all_embeddings = []
+    #     for batch in tqdm(dataloader, desc="Texto"):
+    #         with torch.no_grad():
+    #             # Tokeniza e move para o device
+    #             tokens = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
+    #             embeddings = model.transformer(**tokens)[0][:, 0]  # pega o CLS
+    #             embeddings = model.text_projection(embeddings)
+    #             embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
+                
+    #             all_embeddings.append(embeddings.cpu())
+    #     return torch.cat(all_embeddings)
+
     def generate_text_embeddings(model, tokenizer, dataloader):
         all_embeddings = []
         for batch in tqdm(dataloader, desc="Texto"):
             with torch.no_grad():
-                # Tokeniza e move para o device
-                tokens = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
-                embeddings = model.transformer(**tokens)[0][:, 0]  # pega o CLS
-                embeddings = model.text_projection(embeddings)
-                embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
-                
+                # Tokeniza o batch de textos
+                inputs = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
+                # Extrai embeddings de texto
+                embeddings = model.forward_text(**inputs)
                 all_embeddings.append(embeddings.cpu())
         return torch.cat(all_embeddings)
-
 
     # --- GERAÇÃO ---
     text_emb = generate_text_embeddings(model_text, tokenizer, text_loader)
