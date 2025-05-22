@@ -18,9 +18,9 @@ from datetime import datetime
 # --------------------------------------------------
 def inputs():
     captions_input = 'captions.txt'
-    name_img_input = 'name_img_1000.pkl'
-    image_to_legend_indices_input = 'image_to_legend_indices_1000.pkl'
-    all_legendas_input = 'all_legendas_1000.pkl'
+    name_img_input = 'name_img.pkl'
+    image_to_legend_indices_input = 'image_to_legend_indices.pkl'
+    all_legendas_input = 'all_legendas.pkl'
     modelo_openai_input = 'ViT-B/32'
     ja_feito_salvo_em_pickle = True
 
@@ -352,6 +352,13 @@ def metricas(images_names, all_legendas, image_to_legend_indices, save_path_embe
 
     image_embeddings = torch.load(os.path.join(save_path_embeddings, f'image_embeddings_{modelo_openai_input_path_name}.pt'))
     text_embeddings = torch.load(os.path.join(save_path_embeddings, f'text_embeddings_{modelo_openai_input_path_name}.pt'))
+
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    image_embeddings = image_embeddings.to(device=device, dtype=torch.float32)
+    text_embeddings = text_embeddings.to(device=device, dtype=torch.float32)
+
+    print(image_embeddings.shape, image_embeddings.device, image_embeddings.dtype) 
+    print(text_embeddings.shape, text_embeddings.device, text_embeddings.dtype) 
 
     metricas_img = evaluate_fold_image_to_text(val_indices, image_embeddings, text_embeddings, all_legendas, image_to_legend_indices, val_legend_indices)
     metricas_text = evaluate_fold_text_to_image(val_indices, image_embeddings, text_embeddings, image_to_legend_indices, val_legend_indices)
