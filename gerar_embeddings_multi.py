@@ -174,8 +174,9 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
     print(f"Device usado: {device}")
 
     # --- MODELO DE TEXTO M-CLIP ---
+    device_m = "cpu"
     model_name = 'M-CLIP/XLM-Roberta-Large-Vit-B-32'
-    model_text = pt_multilingual_clip.MultilingualCLIP.from_pretrained(model_name).to(device)
+    model_text = pt_multilingual_clip.MultilingualCLIP.from_pretrained(model_name).to(device_m)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     # --- MODELO DE IMAGEM OPENAI CLIP ---
@@ -247,13 +248,13 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
 
     #     return torch.cat(all_embeddings)
 
-    # def generate_text_embeddings(model, tokenizer, dataloader):
-    #     all_embeddings = []
-    #     for batch in tqdm(dataloader, desc="Texto"):
-    #         with torch.no_grad():
-    #             embeddings = model(batch, tokenizer).to(device)  # já cuida de tudo internamente
-    #             all_embeddings.append(embeddings.cpu())
-    #     return torch.cat(all_embeddings)
+    def generate_text_embeddings(model, tokenizer, dataloader):
+        all_embeddings = []
+        for batch in tqdm(dataloader, desc="Texto"):
+            with torch.no_grad():
+                embeddings = model(batch, tokenizer).to(device_m)  # já cuida de tudo internamente
+                all_embeddings.append(embeddings.cpu())
+        return torch.cat(all_embeddings)
 
     # def generate_text_embeddings(model, tokenizer, dataloader):
     #     all_embeddings = []
@@ -279,16 +280,16 @@ def geracao_embeddings_multilingue(images_names, all_legendas, image_to_legend_i
     #             all_embeddings.append(embeddings.cpu())
     #     return torch.cat(all_embeddings)
 
-    def generate_text_embeddings(model, tokenizer, dataloader):
-        all_embeddings = []
-        for batch in tqdm(dataloader, desc="Texto"):
-            with torch.no_grad():
-                # Tokeniza o batch de textos
-                inputs = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
-                # Extrai embeddings de texto
-                embeddings = model.forward_text(**inputs)
-                all_embeddings.append(embeddings.cpu())
-        return torch.cat(all_embeddings)
+    # def generate_text_embeddings(model, tokenizer, dataloader):
+    #     all_embeddings = []
+    #     for batch in tqdm(dataloader, desc="Texto"):
+    #         with torch.no_grad():
+    #             # Tokeniza o batch de textos
+    #             inputs = tokenizer(batch, padding=True, truncation=True, return_tensors="pt").to(device)
+    #             # Extrai embeddings de texto
+    #             embeddings = model.forward_text(**inputs)
+    #             all_embeddings.append(embeddings.cpu())
+    #     return torch.cat(all_embeddings)
 
     # --- GERAÇÃO ---
     text_emb = generate_text_embeddings(model_text, tokenizer, text_loader)
