@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/users/vcbenedet/FM30k/auto.py", line 275, in <module>
+    met = compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, image_to_legend_indices, k=k)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users/vcbenedet/FM30k/auto.py", line 193, in compute_metrics_at_k
+    sims = batch @ text_embeddings.T          # (B, N_texts)
+           ~~~~~~^~~~~~~~~~~~~~~~~~~
+RuntimeError: expected mat1 and mat2 to have the same dtype, but got: c10::Half != float
