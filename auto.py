@@ -19,14 +19,14 @@ from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_sc
 # --------------------------------------------------
 def inputs():
     captions_input = 'captions.txt'
-    name_img_input = 'name_img.pkl'
-    image_to_legend_indices_input = 'image_to_legend_indices.pkl'
-    all_legendas_input = 'all_legendas.pkl'
+    name_img_input = 'name_img_EN.pkl'
+    image_to_legend_indices_input = 'image_to_legend_indices_EN.pkl'
+    all_legendas_input = 'all_legendas_EN.pkl'
     modelo_openai_input = 'ViT-B/32'
     ja_feito_salvo_em_pickle = True
 
-    modelo_openai_input_path_name = f"{modelo_openai_input.replace('/', '-')}"
-    modelo_openai_input_path_name = f"mclip-b32"
+    modelo_openai_input_path_name = f"{modelo_openai_input.replace('/', '-')}_EN"
+    # modelo_openai_input_path_name = f"mclip-b32"
     return captions_input, name_img_input, image_to_legend_indices_input, all_legendas_input, modelo_openai_input, modelo_openai_input_path_name, ja_feito_salvo_em_pickle
 
 # --------------------------------------------------
