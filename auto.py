@@ -176,8 +176,11 @@ def compute_metrics_at_k(save_path_embeddings, modelo_openai_input_path_name, im
     )
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    image_embeddings = image_embeddings.to(device)
-    text_embeddings = text_embeddings.to(device)
+    image_embeddings = image_embeddings.to(device=device, dtype=torch.float32)
+    text_embeddings = text_embeddings.to(device=device, dtype=torch.float32)
+
+    print(image_embeddings.shape, image_embeddings.device, image_embeddings.dtype) 
+    print(text_embeddings.shape, text_embeddings.device, text_embeddings.dtype) 
 
     # Normalize
     image_embeddings = normalize_embeddings(image_embeddings)
